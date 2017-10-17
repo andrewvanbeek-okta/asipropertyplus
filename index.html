@@ -263,7 +263,7 @@ signIn.renderEl(
     
       }     
 
-   signIn.tokenManager.add('my_access_token', res);
+   signIn.tokenManager.add('my_access_token', res[0].accessToken);
 
       console.log(signIn.tokenManager.get('my_access_token'))
 
