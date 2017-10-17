@@ -33,16 +33,25 @@
 
 <style>
 #okta-sign-in {
-	width:500px;
+	width:400px;
 	height: 1000px;
 	margin-left: 0px;
 
+
+}
+
+.auth-content {
+	margin-top: -50px;
 }
 
 .block {
     clear: both;
     padding: 1.625em 0 0;
     overflow: hidden;
+}
+
+.no-beacon .auth-header {
+    padding-bottom: 0px;
 }
 
 .linkbutton {
@@ -57,26 +66,64 @@
   border-left: 1px solid #CCCCCC;
 }
 
-#sign-in-container a {
-	padding-top: -10px;
-	margin-left: 200px;
-	position: inline-block;
+.auth-header {
+	padding: 0px;
 }
+
+.auth-header {
+    padding: 0px;
+    position: relative;
+    z-index: 10;
+    border-bottom-width: 0px; 
+    -moz-transition: padding-bottom 0.4s;
+    -webkit-transition: padding-bottom 0.4s;
+    transition: padding-bottom 0.4s;
+}
+
+.okta-sign-header {
+	padding: 0px;
+	height: 0px;
+}
+
+
+
 
 #top-cart .top-cart-content {
 	right: 0px;
-	width: 500px;
+	width: 400px;
 }
 
 #sign-in-container {
 	width: auto;
 	height: 500px;
+	
 }
 
 
 .top-cart-content {
 	width: 100%;
 	margin: 0px;
+}
+
+
+#okta-sign-in.auth-container .link {
+  /* -- Fonts and Text Colors: links -- */
+  color: red;
+  display: inline;
+    font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+
+}
+
+.auth-container {
+	border-width: 0px;
 }
 
 
@@ -202,10 +249,10 @@
 var signIn = new OktaSignIn({
   baseUrl: 'https://vanbeektech.okta.com',
   clientId: '0oa4e0xpefudCtOnw1t7',
-  redirectUri: 'https://andrewvanbeek-okta.github.io/asipropertyplus/authorization-code/callback',
+  redirectUri: 'https://andrewvanbeek-okta.github.io/asipropertyplus',
   authParams: {
 // display: 'page',
-  responseType: ['code', 'id_token'],
+  responseType: ['token'],
 
   scopes: ['openid', 'email', 'profile', 'address', 'phone', 'groups', 'offline_access']
   }
@@ -263,7 +310,7 @@ signIn.renderEl(
     
       }     
 
-   signIn.tokenManager.add('my_access_token', res);
+   signIn.tokenManager.add('my_access_token', res[0].accessToken);
 
       console.log(signIn.tokenManager.get('my_access_token'))
 
