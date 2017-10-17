@@ -202,10 +202,10 @@
 var signIn = new OktaSignIn({
   baseUrl: 'https://vanbeektech.okta.com',
   clientId: '0oa4e0xpefudCtOnw1t7',
-  redirectUri: 'https://andrewvanbeek-okta.github.io/asipropertyplus/authorization-code/callback',
+  redirectUri: 'https://andrewvanbeek-okta.github.io/asipropertyplus',
   authParams: {
 // display: 'page',
-  responseType: ['code', 'id_token'],
+  responseType: ['token'],
 
   scopes: ['openid', 'email', 'profile', 'address', 'phone', 'groups', 'offline_access']
   }
